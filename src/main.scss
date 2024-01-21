@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer root {
+  :root {
+    --primary-clr: #5ba4a4;
+    --secondary-clr: #effafa;
+    --accent-clr-100: #eef6f6;
+    --accent-clr-200: #7b8e8e;
+    --accent-clr-300: #2c3a3a;
+  }
+}
