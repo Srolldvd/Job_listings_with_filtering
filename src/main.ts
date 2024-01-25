@@ -1,2 +1,5 @@
 import "./main.scss";
-import "./ts/getJobs";
+import { getJobs } from "./ts/getJobs";
+import "./ts/filterJobs";
+
+getJobs();
