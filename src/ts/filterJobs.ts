@@ -8,11 +8,23 @@ const filterJobs = (data) => {
   } else {
     jobTypes.push(data);
   }
+
   console.log(jobTypes);
-  /*   return jobs.filter((job: jobData) => {
-    if()
-  }); */
+  const filteredJobs = jobs.filter((job: jobData) => {
+    if (checker(job.languages, jobTypes)) {
+      return true;
+    } else {
+      return false;
+    }
+  });
+
+  resultWrapper.innerHTML = "";
+  return filteredJobs.forEach((data: jobData) => {
+    resultWrapper.innerHTML += getJobTemplate(data);
+  });
 };
+
+const checker = (arr, target) => target.every((v) => arr.includes(v));
 
 document.addEventListener("click", (e) => {
   const element = e.target;
