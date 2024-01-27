@@ -30,7 +30,7 @@ const getJobs = async () => {
 
 const getJobTemplate = (data: jobData) => {
   return `
-  <div class="bg-white rounded-sm w-full py-4 px-8 grid grid-cols-1 sm:grid-cols-[auto_1fr] gap-4">
+  <div class="bg-white rounded-sm w-full py-4 px-8 grid grid-cols-1 sm:grid-cols-[auto_1fr] gap-4 ${data.featured ? "border-l-4 border-primary" : ""}">
   <div class="-mt-10 sm:mt-0">
     <img src="${data.logo}" alt="company logo" class="max-w-[4rem] sm:max-w-full sm:min-w-[5.5rem]">
   </div>
@@ -53,7 +53,10 @@ const getJobTemplate = (data: jobData) => {
       </div>
     </div>
     <div class="flex flex-wrap gap-2 pt-4 text-primary font-bold sm:justify-end border-t sm:border-0 sm:pt-0">
+    <span class="bg-secondary px-2 py-1 rounded-md cursor-pointer hover:bg-primary hover:text-white" data-job-category="${data.role}">${data.role}</span>
+    <span class="bg-secondary px-2 py-1 rounded-md cursor-pointer hover:bg-primary hover:text-white" data-job-category="${data.level}">${data.level}</span>
         ${data.languages.map((language: string) => `<span class="bg-secondary px-2 py-1 rounded-md cursor-pointer hover:bg-primary hover:text-white" data-job-category="${language}">${language}</span>`).join("")}
+        ${data.tools.map((tool: string) => `<span class="bg-secondary px-2 py-1 rounded-md cursor-pointer hover:bg-primary hover:text-white" data-job-category="${tool}">${tool}</span>`).join("")}
     </div>
   </div>
 </div>

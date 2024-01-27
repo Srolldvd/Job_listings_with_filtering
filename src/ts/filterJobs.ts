@@ -1,21 +1,16 @@
 import { resultWrapper, getJobTemplate, jobs } from "./getJobs";
 import type { jobData } from "./getJobs";
-let jobTypes = [];
+let jobTypes: string[] = [];
 
-const filterJobs = (data) => {
-  if (jobTypes.indexOf(data) !== -1) {
-    return;
-  } else {
-    jobTypes.push(data);
-  }
+const filterJobs = (data: string) => {
+  if (jobTypes.indexOf(data) !== -1) return;
+  jobTypes.push(data);
 
   console.log(jobTypes);
+
   const filteredJobs = jobs.filter((job: jobData) => {
-    if (checker(job.languages, jobTypes)) {
-      return true;
-    } else {
-      return false;
-    }
+    let items = [job.role, job.level, ...job.languages, ...job.tools];
+    return jobTypes.every((filter) => items.includes(filter));
   });
 
   resultWrapper.innerHTML = "";
@@ -24,11 +19,9 @@ const filterJobs = (data) => {
   });
 };
 
-const checker = (arr, target) => target.every((v) => arr.includes(v));
-
 document.addEventListener("click", (e) => {
-  const element = e.target;
+  const element = e.target as HTMLElement;
   element.closest("[data-job-category]")
-    ? filterJobs(e.target.getAttribute("data-job-category"))
+    ? filterJobs(element.getAttribute("data-job-category"))
     : null;
 });
