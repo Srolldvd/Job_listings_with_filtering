@@ -8,14 +8,11 @@
   <body class="bg-secondary min-h-screen text-[0.9375rem] leading-normal font-sans">
     <header class="relative bg-hero-mobile sm:bg-hero-desktop w-full h-36 bg-no-repeat bg-cover bg-primary px-8">
         <div class="absolute  w-full max-w-4xl inset-x-1/2 -translate-x-2/4 -bottom-2 px-8 text-primary font-bold">
-          <div class="flex justify-between bg-white py-4 px-8">
-            <div id="filter">
-              <span class="bg-secondary px-2 py-1 rounded-md cursor-pointer hover:bg-primary hover:text-white">Frontend</span>
-              <span class="bg-secondary px-2 py-1 rounded-md cursor-pointer hover:bg-primary hover:text-white">Senior</span>
-              <span class="bg-secondary px-2 py-1 rounded-md cursor-pointer hover:bg-primary hover:text-white">HTML</span>
+          <div class="hidden justify-between items-center bg-white py-4 px-8">
+            <div id="filter" class="flex flex-wrap gap-4">
             </div>
             <div>
-              <button class="underline cursor-pointer">clear</button>
+              <button class="cursor-pointer hover:underline" data-clear-filter>Clear</button>
             </div>
         </div>
         </div>

@@ -15,6 +15,7 @@ export default {
       backgroundImage: {
         "hero-mobile": "url('/src/assets/images/bg-header-mobile.svg')",
         "hero-desktop": "url('/src/assets/images/bg-header-desktop.svg')",
+        remove: "url('/src/assets/images/icon-remove.svg')",
       },
     },
   },
