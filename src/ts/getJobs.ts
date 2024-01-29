@@ -28,7 +28,8 @@ const getJobs = async () => {
 };
 
 const printJobs = () => {
-  filterElem.innerHTML = "";
+  jobs.sort((a, b) => (a.featured ? -1 : b.featured ? 1 : 0));
+  resultWrapper.innerHTML = "";
   return jobs.forEach((data: jobData) => {
     resultWrapper.innerHTML += getJobTemplate(data);
   });
@@ -38,7 +39,7 @@ const getJobTemplate = (data: jobData) => {
   return `
   <div class="bg-white rounded-sm w-full py-4 px-8 grid grid-cols-1 sm:grid-cols-[auto_1fr] gap-4 ${data.featured ? "border-l-4 border-primary" : ""}">
   <div class="-mt-10 sm:mt-0">
-    <img src="${data.logo}" alt="company logo" class="max-w-[4rem] sm:max-w-full sm:min-w-[5.5rem]">
+    <img src="${data.logo}" alt="Company logo" class="max-w-[4rem] sm:max-w-full sm:w-[5.5rem]">
   </div>
   <div class="flex flex-col justify-between gap-4 sm:flex-row sm:items-center">
     <div class="flex flex-col gap-1">

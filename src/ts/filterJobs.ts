@@ -52,8 +52,17 @@ document.addEventListener("click", (e) => {
   element.closest("[data-job-category]")
     ? filterJobs(element.getAttribute("data-job-category") as string)
     : null;
-  element.closest("[data-clear-filter]") ? (jobTypes = []) : null;
-  element.closest("[data-clear-filter]") ? printJobs() : null;
+  element.closest("[data-clear-filter]") ? clearFilter() : null;
 });
 
 export { filterElem };
+
+const clearFilter = () => {
+  filterWrapperElem.classList.remove("flex");
+  filterWrapperElem.classList.add("hidden");
+  jobTypes = [];
+  filterElem.innerHTML = "";
+  return printJobs();
+};
+
+//const removeFilter = () => {};
