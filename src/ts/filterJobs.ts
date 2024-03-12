@@ -52,6 +52,7 @@ document.addEventListener("click", (e) => {
   element.closest("[data-job-category]")
     ? filterJobs(element.getAttribute("data-job-category") as string)
     : null;
+  element.closest("[data-remove-filter]") ? removeFilter(e) : null;
   element.closest("[data-clear-filter]") ? clearFilter() : null;
 });
 
@@ -65,4 +66,11 @@ const clearFilter = () => {
   return printJobs();
 };
 
-//const removeFilter = () => {};
+const removeFilter = (e) => {
+  const element = e.target;
+  const index = jobTypes.indexOf(element.previousElementSibling.textContent);
+  if (index === -1) return;
+  element.parentElement.remove();
+  jobTypes.splice(index, 1);
+  printJobs();
+};
